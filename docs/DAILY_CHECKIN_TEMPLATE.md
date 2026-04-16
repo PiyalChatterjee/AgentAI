@@ -59,7 +59,9 @@
 - DAY_01_NOTES.md: 350+ lines covering Q1 (API basics), Q2 (system prompts), Q3 (API structure + parameters), Q4 (tokenization)
 - Includes recall checks with user answers and detailed clarifications (especially Temperature vs Top_P)
 
-**Git commits:** (not yet tracked; ready for first commit)
+**Git commits:** ✅ Committed and pushed
+- **7179b7b:** Day 1 Enhancements: Project Organization & Documentation Updates
+- **d491392:** Add comprehensive course documentation and daily check-in template
 
 ---
 
@@ -100,6 +102,15 @@
 4. **API is stateless** — Must manage conversation history manually; each call is independent
 
 **Questions for feedback:**
-1. For a multi-turn conversation script (building on Q3), should I use a conversation array pattern or store history in a database?
+
+1. **Multi-turn conversation storage strategy — ANSWERED**
+   - Q: For a multi-turn conversation script (building on Q3), should I use a conversation array pattern or store history in a database?
+   - A: **Depends on the context**
+     - Use **conversation array** if: single-session interactions, no need to recall past conversations, cost-sensitive
+     - Use **database** if: persistent history needed, user wants to query old conversations, audit/compliance required
+     - **Key factor:** Storage cost scales with data volume; weigh persistence benefit vs. cost
+   - **Takeaway:** Start with array for MVP, migrate to database if persistence becomes a requirement
+
 2. When comparing multiple models (Day 2 plan), what metrics would be most useful: token efficiency, quality/correctness, latency, or cost?
+
 3. Is the fallback token estimation (chars/4) acceptable for production, or should I enforce tiktoken download?
