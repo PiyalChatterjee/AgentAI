@@ -11,25 +11,31 @@
 **What I built today:**
 - `day1_chatbot.py` — 3-prompt comparison chatbot (Friendly Teacher, Technical Expert, Product Manager)
 - `token_utils.py` — Token counter utility with cost estimation and offline fallback
-- `DAY_01_NOTES.md` — Comprehensive learning notes covering Q1-Q4 + all activities
+- `DAY_01_NOTES.md` — Comprehensive learning notes covering Q1-Q4 + activities A1-A8
+- `sample_messages.json` — Example messages file for testing token counter on multi-turn conversations
+- **Folder reorganization:** Created day_01/, docs/, shared/ structure with README guides
 
 **Files created/modified:**
 - day1_chatbot.py (✅ working)
 - token_utils.py (✅ working)
 - day1_results.json (✅ saved outputs)
-- DAY_01_NOTES.md (✅ complete)
+- DAY_01_NOTES.md (✅ expanded with A7-A8)
+- sample_messages.json (✅ example messages for testing)
+- PROJECT_STRUCTURE.md (✅ navigation guide, root)
+- day_01/README.md (✅ day-specific guide)
+- docs/README.md (✅ documentation guide)
 
-**Demo status:** ✅ **Fully working** — both scripts run end-to-end without errors
+**Demo status:** ✅ **Fully working** — all scripts run end-to-end without errors; folder structure tested and documented
 
 ---
 
 ## 2) Assessment Metrics
 
-- **Task completion:** 100% (Q1, Q2, Q3, Q4 + A1-A6 all completed)
-- **Correctness:** 98% (Q3 recall checks: 3/4 perfect; 1 with minor clarification)
-- **Reliability:** 100% (both scripts execute without errors; proper error handling for offline scenarios)
+- **Task completion:** 100% (Q1-Q4 + A1-A8 all completed; folder structure organized)
+- **Correctness:** 98% (Q3 recall checks: 3/4 perfect; file format error identified and fixed)
+- **Reliability:** 100% (all scripts execute without errors; error handling for offline scenarios + proper file formats)
 - **Hallucination incidents:** 0 (no API hallucinations in saved outputs)
-- **Retry/error loops handled:** 2 (tiktoken offline fallback, venv interpreter mismatch)
+- **Retry/error loops handled:** 3 (tiktoken offline fallback, venv interpreter mismatch, token_utils.py file format issue)
 
 ---
 
