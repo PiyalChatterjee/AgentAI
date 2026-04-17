@@ -77,7 +77,7 @@
 - `day_02/DAY_02_NOTES.md` now includes completed concept answers, benchmark analysis, cost projections, and final recommendation matrix
 
 **Git commits:**
-- Not committed yet for Day 2 artifacts (pending your commit preference)
+- ✅ **Committed and pushed** — Day 2 artifacts (model comparison, selector, edge cases, results, notes) committed and pushed to repository
 
 ---
 
