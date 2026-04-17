@@ -1,7 +1,7 @@
-# Daily Check-In: Day 1
+# Daily Check-In: Day 2
 
 **Date:** April 17, 2026  
-**Phase/Day:** Day 1 - OpenAI API & System Prompts Fundamentals  
+**Phase/Day:** Day 2 - Model Comparison & Architecture  
 **Hours invested:** ~5-6 hours  
 
 ---
@@ -9,108 +9,117 @@
 ## 1) Build Output
 
 **What I built today:**
-- `day1_chatbot.py` — 3-prompt comparison chatbot (Friendly Teacher, Technical Expert, Product Manager)
-- `token_utils.py` — Token counter utility with cost estimation and offline fallback
-- `DAY_01_NOTES.md` — Comprehensive learning notes covering Q1-Q4 + activities A1-A8
-- `sample_messages.json` — Example messages file for testing token counter on multi-turn conversations
-- **Folder reorganization:** Created day_01/, docs/, shared/ structure with README guides
+- `day2_model_comparison.py` — Unified multi-provider comparison runner (Azure OpenAI + Ollama)
+- `model_selector.py` — Rule-based model routing utility by task/budget/latency/quality constraints
+- `day2_edge_cases.py` — Edge-case evaluation suite (contradiction handling, cutoff honesty, balanced sensitive reasoning)
+- `day2_results.json` + `comparison_table.json` — Prompt-by-prompt and aggregated comparison metrics
+- `day2_edge_results.json` + `day2_edge_summary.json` — Edge-case outputs and latency reliability summary
+- `DAY_02_NOTES.md` — Complete learning notes (Q1-Q4 + A1-A8) with measured outcomes
 
 **Files created/modified:**
-- day1_chatbot.py (✅ working)
-- token_utils.py (✅ working)
-- day1_results.json (✅ saved outputs)
-- DAY_01_NOTES.md (✅ expanded with A7-A8)
-- sample_messages.json (✅ example messages for testing)
-- PROJECT_STRUCTURE.md (✅ navigation guide, root)
-- day_01/README.md (✅ day-specific guide)
-- docs/README.md (✅ documentation guide)
+- day_02/day2_model_comparison.py (✅ working)
+- day_02/model_selector.py (✅ working)
+- day_02/day2_edge_cases.py (✅ working)
+- day_02/day2_results.json (✅ generated)
+- day_02/comparison_table.json (✅ generated)
+- day_02/day2_edge_results.json (✅ generated)
+- day_02/day2_edge_summary.json (✅ generated)
+- day_02/DAY_02_NOTES.md (✅ updated with evidence)
 
-**Demo status:** ✅ **Fully working** — all scripts run end-to-end without errors; folder structure tested and documented
+**Demo status:** ✅ **Fully working** — all Day 2 scripts run successfully in `.venv`; Azure deployed model and local Ollama both validated
 
 ---
 
 ## 2) Assessment Metrics
 
-- **Task completion:** 100% (Q1-Q4 + A1-A8 all completed; folder structure organized)
-- **Correctness:** 98% (Q3 recall checks: 3/4 perfect; file format error identified and fixed)
-- **Reliability:** 100% (all scripts execute without errors; error handling for offline scenarios + proper file formats)
-- **Hallucination incidents:** 0 (no API hallucinations in saved outputs)
-- **Retry/error loops handled:** 3 (tiktoken offline fallback, venv interpreter mismatch, token_utils.py file format issue)
+- **Task completion:** 100% (Q1-Q4 + A1-A8 completed for Day 2 scope)
+- **Correctness:** 98% (model outputs consistent; minor tradeoff notes on local response structure)
+- **Reliability:** 100% (all benchmark and edge-case runs completed successfully)
+- **Hallucination incidents:** 0 critical incidents (cutoff honesty behavior explicitly tested)
+- **Retry/error loops handled:** 4 (provider timeout tuning, Ollama long-generation handling, Azure-only run validation, combined run validation)
 
 ---
 
 ## 3) Technical Depth
 
-- **Tool use quality (1-5):** 4 — Proper Azure OpenAI integration, environment variable management, error handling
-- **Prompt quality (1-5):** 5 — Designed 3 distinct system prompts with explicit structure constraints; all outputs matched roles perfectly
-- **State/memory design quality (1-5):** 4 — Understood stateless API + manual history resending; properly documented conversation pattern
-- **Evaluation quality (1-5):** 5 — Tested 3 prompts side-by-side, compared token usage, scored outputs, drew conclusions
+- **Tool use quality (1-5):** 5 — Built end-to-end benchmark pipeline with reusable provider abstraction and CLI routing
+- **Prompt quality (1-5):** 4 — Good task coverage and edge-case prompts; next step is tighter output-length constraints for consistency
+- **State/memory design quality (1-5):** 5 — Standardized result schema across providers and persisted structured run artifacts
+- **Evaluation quality (1-5):** 5 — Compared quality, latency, tokens, and cost across baseline and edge-case suites
 
 ---
 
 ## 4) Evidence
 
 **Working artifacts:**
-- `day1_chatbot.py` runs and outputs 3 distinct responses (231-290 tokens each)
-- `day1_results.json` contains timestamped API responses with token counts
-- `token_utils.py` test: `python token_utils.py -t "What is tokenization?" -p 0.0001` → 5 tokens, cost $0.000001
+- `day2_model_comparison.py` produced side-by-side benchmark metrics for Azure + Ollama
+- `model_selector.py` produced consistent routing outputs for legal/support/creative/code scenarios
+- `day2_edge_cases.py` produced 3/3 successful runs for each provider
+
+**Measured benchmark summary (A3/A6):**
+- **Azure deployed (`ai102-chat-model`)**
+  - Avg latency: **4873.23 ms**
+  - Avg tokens: **309.67**
+  - Avg estimated cost: **$0.003097/prompt**
+  - Avg quality (auto): **5.0/5**
+- **Ollama (`llama3.2:latest`)**
+  - Avg latency: **23624.63 ms**
+  - Avg tokens: **245.0**
+  - API cost: **$0.0** (infra/electricity not included)
+  - Avg quality (auto): **4.67/5**
+
+**Edge-case summary (A7):**
+- Azure: 3/3 success, avg latency **4204.71 ms**
+- Ollama: 3/3 success, avg latency **36432.9 ms**
+- Notable behavior: Azure gave clearer cutoff uncertainty responses; both handled balanced argument prompts reasonably
 
 **Learning documentation:**
-- DAY_01_NOTES.md: 350+ lines covering Q1 (API basics), Q2 (system prompts), Q3 (API structure + parameters), Q4 (tokenization)
-- Includes recall checks with user answers and detailed clarifications (especially Temperature vs Top_P)
+- `day_02/DAY_02_NOTES.md` now includes completed concept answers, benchmark analysis, cost projections, and final recommendation matrix
 
-**Git commits:** ✅ Committed and pushed
-- **7179b7b:** Day 1 Enhancements: Project Organization & Documentation Updates
-- **d491392:** Add comprehensive course documentation and daily check-in template
+**Git commits:**
+- Not committed yet for Day 2 artifacts (pending your commit preference)
 
 ---
 
 ## 5) Blockers
 
-- **Main blocker:** None
-- **Issues resolved:** 
-  - Tiktoken needed internet for first encoding download → Added graceful fallback to char-based estimation
-  - Script was not loading `.env` credentials → Fixed with explicit `load_dotenv()`
-  - Azure API required deployment name, not model name → Resolved with proper parameter mapping
-- **What I need help with:** None at this stage
+- **Main blocker:** None remaining
+- **Issues resolved:**
+  - Long Ollama response times on larger prompt/model combinations → mitigated via lighter model selection and generation caps
+  - Azure-only visibility gap in results → resolved with provider-specific run and combined run
+  - Local vs cloud timing inconsistency → captured explicitly in benchmark and edge-case summaries
+- **What I need help with:**
+  - Optional: confirm final pricing constants per Azure deployment for exact (not estimated) cost reporting
 
 ---
 
 ## 6) Reflection
 
 **What went well:**
-- All 4 concept questions (Q1-Q4) completed and deeply understood
-- Hands-on practice (3-prompt comparison) reinforced system prompt theory
-- Token counting tool built with real-world fallback handling
-- Environment fully functional: Azure OpenAI + venv + .env properly configured
-- Notes organized sequentially and comprehensively for future review
+- Completed full model-comparison learning loop from concepts to production-style evaluation scripts
+- Successfully benchmarked Azure deployed model against local Ollama with consistent schema
+- Built practical model routing utility aligned with task constraints (quality, latency, budget)
+- Captured edge-case behavior instead of only happy-path outputs
+- Notes are now sequential and review-friendly with measured evidence
 
 **What failed:**
-- Nothing critical; minor hiccups (tiktoken offline, interpreter path) were handled gracefully
+- Initial assumption that local model would always be faster was incorrect on current hardware; latency was significantly higher despite lower tokens
 
 **One change for tomorrow:**
-- Build Day 2 practice: Model Comparison exercise (compare outputs from GPT-4, Claude, Gemini, DeepSeek using the working Azure setup)
+- Start Day 3 with token/cost optimization and quality-regression checks using today’s benchmark harness as baseline
 
 ---
 
 ## 7) Key Takeaways & Questions
 
-**Major insights from Day 1:**
-1. **Prompt choice is context-dependent** — Same question + 3 different prompts = 3 fundamentally different outputs (but each matched its intended role perfectly)
-2. **Explicit structure wins** — Adding hard constraints (word counts, bullet structure) dramatically improved output quality
-3. **Token management is cost management** — Different prompt styles consumed 231-290 tokens for same question; cost scales with token usage
-4. **API is stateless** — Must manage conversation history manually; each call is independent
+**Major insights from Day 2:**
+1. **Model choice is a routing problem** — no single model wins on all dimensions (quality, latency, cost)
+2. **Lower token count does not guarantee lower latency** — compute environment and inference stack matter heavily
+3. **Cloud model currently wins UX in this setup** — Azure was ~4.9x faster on average than local Ollama benchmark runs
+4. **Edge-case behavior matters for trust** — explicit uncertainty handling is a key quality signal
 
 **Questions for feedback:**
 
-1. **Multi-turn conversation storage strategy — ANSWERED**
-   - Q: For a multi-turn conversation script (building on Q3), should I use a conversation array pattern or store history in a database?
-   - A: **Depends on the context**
-     - Use **conversation array** if: single-session interactions, no need to recall past conversations, cost-sensitive
-     - Use **database** if: persistent history needed, user wants to query old conversations, audit/compliance required
-     - **Key factor:** Storage cost scales with data volume; weigh persistence benefit vs. cost
-   - **Takeaway:** Start with array for MVP, migrate to database if persistence becomes a requirement
-
-2. When comparing multiple models (Day 2 plan), what metrics would be most useful: token efficiency, quality/correctness, latency, or cost?
-
-3. Is the fallback token estimation (chars/4) acceptable for production, or should I enforce tiktoken download?
+1. For production routing, should I add confidence scoring + automatic fallback (e.g., local first, Azure fallback on low confidence)?
+2. Should I prioritize batching/parallelization next for throughput optimization, or prompt-compression first for cost optimization?
+3. For cost reporting, is an estimated per-1K token constant acceptable at this stage, or should I integrate deployment-specific pricing config now?
