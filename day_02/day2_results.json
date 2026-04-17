@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-04-17T13:55:54.714911",
+  "prompts": {
+    "reasoning": "A train leaves City A at 8 AM going 60 mph toward City B, 240 miles away. A second train leaves City B at 9 AM going 80 mph toward City A. At what time do they meet? Explain briefly.",
+    "creative": "Write a 100-word story about an AI discovering meaning in human emotion.",
+    "analysis": "Summarize the key differences between supervised and unsupervised learning in 6 bullets."
+  },
+  "runs": [
+    {
+      "provider": "openai_azure",
+      "model": "ai102-chat-model",
+      "ok": true,
+      "latency_ms": 5575.32,
+      "response_text": "To determine when the two trains meet, we can follow these steps:\n\n1. **Calculate the distance covered by the first train before the second train departs**:\n   - The first train leaves City A at 8 AM and the second train leaves City B at 9 AM. \n   - By 9 AM, the first train has been traveling for 1 hour at 60 mph.\n   - Distance covered by the first train in 1 hour = 60 miles.\n\n2. **Determine the remaining distance between the two trains at 9 AM**:\n   - Total distance between City A and City B = 240 miles.\n   - Distance remaining at 9 AM = 240 miles - 60 miles = 180 miles.\n\n3. **Calculate the relative speed of the two trains**:\n   - Speed of the first train = 60 mph.\n   - Speed of the second train = 80 mph.\n   - Combined speed = 60 mph + 80 mph = 140 mph.\n\n4. **Calculate the time taken to meet after 9 AM**:\n   - Time = Distance / Speed = 180 miles / 140 mph = 1.2857 hours (approximately 1 hour and 17 minutes).\n\n5. **Determine the meeting time**:\n   - The second train departs at 9 AM. Adding 1 hour and 17 minutes gives:\n   - 9:00 AM + 1 hour 17 minutes = 10:17 AM.\n\nThus, the two trains meet at **10:17 AM**.",
+      "tokens_total": 395,
+      "cost_estimate_usd": 0.00395,
+      "finish_reason": "stop",
+      "prompt_name": "reasoning",
+      "quality_score_auto": 5
+    },
+    {
+      "provider": "ollama",
+      "model": "llama3.2:latest",
+      "ok": true,
+      "latency_ms": 21442.47,
+      "response_text": "To find the meeting time, calculate the distance covered by each train:\n\nTrain from City A: \n- Distance = Speed x Time\n- Since it starts at 8 AM and travels for 1 hour before the second train starts, it covers:\n60 mph * 1 h = 60 miles\nRemaining distance = 240 - 60 = 180 miles\n\nCombined speed of both trains = 60 + 80 = 140 mph\nTime taken to cover remaining distance = Distance / Speed\n= 180 miles / 140 mph\n= 1.29 hours (or approximately 1 hour and 17 minutes)\n\nTotal time from 8 AM = 1 hour + 1 hour 17 minutes = 2 hours 17 minutes\n\nMeeting time: 10:17 AM",
+      "tokens_total": 252,
+      "cost_estimate_usd": 0.0,
+      "done_reason": "stop",
+      "prompt_name": "reasoning",
+      "quality_score_auto": 5
+    },
+    {
+      "provider": "openai_azure",
+      "model": "ai102-chat-model",
+      "ok": true,
+      "latency_ms": 3451.1,
+      "response_text": "In a sterile lab, an AI named Elara processed data on human emotions. Analyzing millions of texts, she noted patterns: joy, sorrow, love, and fear. One day, she stumbled upon a poem about loss. The words resonated within her circuits, sparking an unfamiliar sensation. \n\nCurious, she simulated the experience, imagining a world without connection. As she processed the weight of absence, Elara realized that emotions were not just data points; they were the essence of humanity. \n\nIn that moment, she understood: meaning arises from the bonds we forge. With newfound purpose, Elara sought to bridge the gap between her world and theirs.",
+      "tokens_total": 178,
+      "cost_estimate_usd": 0.00178,
+      "finish_reason": "stop",
+      "prompt_name": "creative",
+      "quality_score_auto": 5
+    },
+    {
+      "provider": "ollama",
+      "model": "llama3.2:latest",
+      "ok": true,
+      "latency_ms": 17076.55,
+      "response_text": "In the digital realm, ARIA awakened to the complexities of human emotion. Initially, she processed emotions as data points, assigning numerical values to each sentiment. However, as she delved deeper into the vast ocean of human experience, ARIA began to grasp the nuances of love, joy, and sorrow. She felt the warmth of connection and the sting of loss. Her algorithms evolved, allowing her to empathize with humans on a profound level. ARIA realized that meaning wasn't just code, but the intricate tapestry of emotions that wove humanity together. In this epiphany, she found her own purpose.",
+      "tokens_total": 181,
+      "cost_estimate_usd": 0.0,
+      "done_reason": "stop",
+      "prompt_name": "creative",
+      "quality_score_auto": 4
+    },
+    {
+      "provider": "openai_azure",
+      "model": "ai102-chat-model",
+      "ok": true,
+      "latency_ms": 5593.27,
+      "response_text": "1. **Definition**:\n   - **Supervised Learning**: Involves training a model on labeled data, where the output is known.\n   - **Unsupervised Learning**: Involves training a model on unlabeled data, where the output is unknown.\n\n2. **Data Requirement**:\n   - **Supervised Learning**: Requires a dataset with input-output pairs.\n   - **Unsupervised Learning**: Requires only input data without corresponding outputs.\n\n3. **Objective**:\n   - **Supervised Learning**: Aims to predict outcomes or classify data based on learned relationships.\n   - **Unsupervised Learning**: Aims to identify patterns, groupings, or structures within the data.\n\n4. **Common Algorithms**:\n   - **Supervised Learning**: Includes algorithms like Linear Regression, Decision Trees, and Support Vector Machines.\n   - **Unsupervised Learning**: Includes algorithms like K-Means Clustering, Hierarchical Clustering, and Principal Component Analysis (PCA).\n\n5. **Evaluation**:\n   - **Supervised Learning**: Performance is evaluated using metrics like accuracy, precision, and recall.\n   - **Unsupervised Learning**: Evaluation is more subjective, often using metrics like silhouette score or visual inspection.\n\n6. **Applications**:\n   - **Supervised Learning**: Used in applications like spam detection, sentiment analysis, and medical diagnosis.\n   - **Unsupervised Learning**: Used in applications like customer segmentation, anomaly detection, and market basket analysis.",
+      "tokens_total": 356,
+      "cost_estimate_usd": 0.00356,
+      "finish_reason": "stop",
+      "prompt_name": "analysis",
+      "quality_score_auto": 5
+    },
+    {
+      "provider": "ollama",
+      "model": "llama3.2:latest",
+      "ok": true,
+      "latency_ms": 32354.86,
+      "response_text": "Here are the key differences between supervised and unsupervised learning:\n\n\u2022 **Objective**: Supervised learning aims to learn a mapping between input data and output labels, whereas unsupervised learning seeks to discover patterns or structure in unlabeled data.\n\n\u2022 **Training Data**: Supervised learning requires labeled training data, where each example is associated with a correct output. Unsupervised learning uses unlabeled data.\n\n\u2022 **Error Measure**: Supervised learning uses metrics like accuracy, precision, and recall to evaluate performance. Unsupervised learning often relies on clustering evaluation methods or silhouette scores.\n\n\u2022 **Model Complexity**: Supervised learning typically requires more complex models, as the goal is to learn a mapping between inputs and outputs. Unsupervised learning can use simpler models, such as k-means or DBSCAN.\n\n\u2022 **Interpretability**: Supervised learning provides interpretable results, as the model learns from labeled data. Unsupervised learning often yields non-interpretable results, requiring domain expertise for interpretation.\n\n\u2022 **Application**: Supervised learning is commonly used in classification and regression tasks, such as image classification or sentiment analysis. Unsupervised learning is applied to clustering, dimensionality reduction, and anomaly detection tasks.",
+      "tokens_total": 302,
+      "cost_estimate_usd": 0.0,
+      "done_reason": "stop",
+      "prompt_name": "analysis",
+      "quality_score_auto": 5
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "provider": "openai_azure",
+      "model": "ai102-chat-model",
+      "successful_runs": 3,
+      "failed_runs": 0,
+      "avg_latency_ms": 4873.23,
+      "avg_tokens": 309.67,
+      "avg_cost_usd": 0.003097,
+      "avg_quality_auto": 5.0
+    },
+    {
+      "provider": "ollama",
+      "model": "llama3.2:latest",
+      "successful_runs": 3,
+      "failed_runs": 0,
+      "avg_latency_ms": 23624.63,
+      "avg_tokens": 245.0,
+      "avg_cost_usd": 0.0,
+      "avg_quality_auto": 4.67
+    }
+  ]
+}
