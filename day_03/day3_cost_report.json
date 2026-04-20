@@ -1,0 +1,318 @@
+{
+  "timestamp": "2026-04-20T16:01:06.575045",
+  "model": "ai102-chat-model",
+  "prices": {
+    "input_per_1k_usd": 0.01,
+    "output_per_1k_usd": 0.03
+  },
+  "cases": [
+    {
+      "name": "friendly_teacher",
+      "baseline": {
+        "prompt_tokens": 95,
+        "max_completion_tokens": 220,
+        "estimated_cost_usd": 0.00755,
+        "budget": {
+          "context_limit": 8192,
+          "total_tokens_budgeted": 315,
+          "usage_pct": 3.85,
+          "status": "safe"
+        }
+      },
+      "optimized": {
+        "prompt_tokens": 43,
+        "max_completion_tokens": 120,
+        "estimated_cost_usd": 0.00403,
+        "budget": {
+          "context_limit": 8192,
+          "total_tokens_budgeted": 163,
+          "usage_pct": 1.99,
+          "status": "safe"
+        }
+      },
+      "savings": {
+        "prompt_token_reduction": 52,
+        "prompt_token_reduction_pct": 54.74,
+        "estimated_cost_reduction_usd": 0.00352,
+        "estimated_cost_reduction_pct": 46.62
+      },
+      "guardrails": {
+        "recommended_temperature": 0.2,
+        "recommended_top_p": 0.9,
+        "recommended_max_tokens": 120,
+        "quality_gate": "Ensure all 8 required bullets present and within word limits"
+      }
+    },
+    {
+      "name": "technical_expert",
+      "baseline": {
+        "prompt_tokens": 79,
+        "max_completion_tokens": 220,
+        "estimated_cost_usd": 0.00739,
+        "budget": {
+          "context_limit": 8192,
+          "total_tokens_budgeted": 299,
+          "usage_pct": 3.65,
+          "status": "safe"
+        }
+      },
+      "optimized": {
+        "prompt_tokens": 47,
+        "max_completion_tokens": 120,
+        "estimated_cost_usd": 0.00407,
+        "budget": {
+          "context_limit": 8192,
+          "total_tokens_budgeted": 167,
+          "usage_pct": 2.04,
+          "status": "safe"
+        }
+      },
+      "savings": {
+        "prompt_token_reduction": 32,
+        "prompt_token_reduction_pct": 40.51,
+        "estimated_cost_reduction_usd": 0.00332,
+        "estimated_cost_reduction_pct": 44.93
+      },
+      "guardrails": {
+        "recommended_temperature": 0.2,
+        "recommended_top_p": 0.9,
+        "recommended_max_tokens": 120,
+        "quality_gate": "Ensure all 8 required bullets present and within word limits"
+      }
+    },
+    {
+      "name": "product_manager",
+      "baseline": {
+        "prompt_tokens": 83,
+        "max_completion_tokens": 220,
+        "estimated_cost_usd": 0.00743,
+        "budget": {
+          "context_limit": 8192,
+          "total_tokens_budgeted": 303,
+          "usage_pct": 3.7,
+          "status": "safe"
+        }
+      },
+      "optimized": {
+        "prompt_tokens": 43,
+        "max_completion_tokens": 120,
+        "estimated_cost_usd": 0.00403,
+        "budget": {
+          "context_limit": 8192,
+          "total_tokens_budgeted": 163,
+          "usage_pct": 1.99,
+          "status": "safe"
+        }
+      },
+      "savings": {
+        "prompt_token_reduction": 40,
+        "prompt_token_reduction_pct": 48.19,
+        "estimated_cost_reduction_usd": 0.0034,
+        "estimated_cost_reduction_pct": 45.76
+      },
+      "guardrails": {
+        "recommended_temperature": 0.2,
+        "recommended_top_p": 0.9,
+        "recommended_max_tokens": 120,
+        "quality_gate": "Ensure all 8 required bullets present and within word limits"
+      }
+    }
+  ],
+  "aggregate": {
+    "avg_baseline_prompt_tokens": 85.67,
+    "avg_optimized_prompt_tokens": 44.33,
+    "avg_baseline_cost_usd": 0.007457,
+    "avg_optimized_cost_usd": 0.004043,
+    "avg_prompt_reduction_pct": 48.25,
+    "avg_cost_reduction_pct": 45.78,
+    "projection": {
+      "daily_calls": 1000000,
+      "daily_baseline_cost_usd": 7456.67,
+      "daily_optimized_cost_usd": 4043.33,
+      "daily_savings_usd": 3413.33,
+      "monthly_savings_usd": 102400.0
+    }
+  },
+  "redundancy_insights": {
+    "baseline_redundancy_order": [
+      "friendly_teacher",
+      "product_manager",
+      "technical_expert"
+    ],
+    "optimized_redundancy_order": [
+      "technical_expert",
+      "friendly_teacher",
+      "product_manager"
+    ],
+    "note": "Higher prompt tokens generally indicate more redundant or verbose instructions. Ranking helps prioritize which prompts to compress first."
+  },
+  "model_cost_curves": {
+    "curves": [
+      {
+        "profile": "azure_deployed_current",
+        "prices": {
+          "input_per_1k_usd": 0.01,
+          "output_per_1k_usd": 0.03
+        },
+        "avg_baseline_cost_usd": 0.007457,
+        "avg_optimized_cost_usd": 0.004043,
+        "cost_reduction_pct": 45.78,
+        "projection": {
+          "daily_calls": 1000000,
+          "daily_baseline_cost_usd": 7456.67,
+          "daily_optimized_cost_usd": 4043.33,
+          "monthly_savings_usd": 102400.0
+        }
+      },
+      {
+        "profile": "gpt_4o_mini_like",
+        "prices": {
+          "input_per_1k_usd": 0.0015,
+          "output_per_1k_usd": 0.006
+        },
+        "avg_baseline_cost_usd": 0.001449,
+        "avg_optimized_cost_usd": 0.000786,
+        "cost_reduction_pct": 45.7,
+        "projection": {
+          "daily_calls": 1000000,
+          "daily_baseline_cost_usd": 1448.5,
+          "daily_optimized_cost_usd": 786.5,
+          "monthly_savings_usd": 19860.0
+        }
+      },
+      {
+        "profile": "premium_frontier_like",
+        "prices": {
+          "input_per_1k_usd": 0.01,
+          "output_per_1k_usd": 0.03
+        },
+        "avg_baseline_cost_usd": 0.007457,
+        "avg_optimized_cost_usd": 0.004043,
+        "cost_reduction_pct": 45.78,
+        "projection": {
+          "daily_calls": 1000000,
+          "daily_baseline_cost_usd": 7456.67,
+          "daily_optimized_cost_usd": 4043.33,
+          "monthly_savings_usd": 102400.0
+        }
+      }
+    ]
+  },
+  "quality_regression": {
+    "token_cap_regression": [
+      {
+        "case": "friendly_teacher",
+        "checks": [
+          {
+            "completion_cap": 80,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "high"
+          },
+          {
+            "completion_cap": 100,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "high"
+          },
+          {
+            "completion_cap": 120,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "medium"
+          },
+          {
+            "completion_cap": 160,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "low"
+          }
+        ],
+        "recommended_floor": 120
+      },
+      {
+        "case": "technical_expert",
+        "checks": [
+          {
+            "completion_cap": 80,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "high"
+          },
+          {
+            "completion_cap": 100,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "high"
+          },
+          {
+            "completion_cap": 120,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "medium"
+          },
+          {
+            "completion_cap": 160,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "low"
+          }
+        ],
+        "recommended_floor": 120
+      },
+      {
+        "case": "product_manager",
+        "checks": [
+          {
+            "completion_cap": 80,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "high"
+          },
+          {
+            "completion_cap": 100,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "high"
+          },
+          {
+            "completion_cap": 120,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "medium"
+          },
+          {
+            "completion_cap": 160,
+            "estimated_min_tokens_needed": 110,
+            "has_structured_constraints": true,
+            "risk": "low"
+          }
+        ],
+        "recommended_floor": 120
+      }
+    ]
+  },
+  "optimization_playbook": {
+    "principles": [
+      "Compress system prompts first; they are paid on every call.",
+      "Optimize completion caps aggressively, but enforce quality gates.",
+      "Use model routing: cheaper profile for easy tasks, premium for hard tasks.",
+      "Keep history targeted; summarize stale turns instead of replaying all context."
+    ],
+    "measured_wins": {
+      "prompt_reduction_pct": 48.25,
+      "cost_reduction_pct": 45.78,
+      "monthly_savings_usd": 102400.0
+    },
+    "recommended_defaults": {
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "max_tokens": 120,
+      "quality_gate": "8 bullets present and each within word limit"
+    },
+    "best_savings_profile": {
+      "profile": "azure_deployed_current",
+      "monthly_savings_usd": 102400.0
+    }
+  }
+}
