@@ -1,83 +1,88 @@
-# Daily Check-In: Day 2
+# Daily Check-In: Day 3
 
-**Date:** April 17, 2026  
-**Phase/Day:** Day 2 - Model Comparison & Architecture  
-**Hours invested:** ~5-6 hours  
+**Date:** April 20, 2026  
+**Phase/Day:** Day 3 - Tokenization & Cost Optimization  
+**Hours invested:** ~4-5 hours  
 
 ---
 
 ## 1) Build Output
 
 **What I built today:**
-- `day2_model_comparison.py` — Unified multi-provider comparison runner (Azure OpenAI + Ollama)
-- `model_selector.py` — Rule-based model routing utility by task/budget/latency/quality constraints
-- `day2_edge_cases.py` — Edge-case evaluation suite (contradiction handling, cutoff honesty, balanced sensitive reasoning)
-- `day2_results.json` + `comparison_table.json` — Prompt-by-prompt and aggregated comparison metrics
-- `day2_edge_results.json` + `day2_edge_summary.json` — Edge-case outputs and latency reliability summary
-- `DAY_02_NOTES.md` — Complete learning notes (Q1-Q4 + A1-A8) with measured outcomes
+- `day3_token_optimization.py` — End-to-end token optimization benchmark and analytics pipeline
+- `day3_cost_report.json` — Structured benchmark report with per-case metrics and projections
+- Enhanced analysis modules in script:
+  - Redundancy ranking by prompt family
+  - Model cost curves across pricing profiles
+  - Token-cap quality risk checks
+  - Final optimization playbook generation
+- `DAY_03_NOTES.md` — Complete learning notes (Q1-Q4 + A1-A8) with measured evidence
 
 **Files created/modified:**
-- day_02/day2_model_comparison.py (✅ working)
-- day_02/model_selector.py (✅ working)
-- day_02/day2_edge_cases.py (✅ working)
-- day_02/day2_results.json (✅ generated)
-- day_02/comparison_table.json (✅ generated)
-- day_02/day2_edge_results.json (✅ generated)
-- day_02/day2_edge_summary.json (✅ generated)
-- day_02/DAY_02_NOTES.md (✅ updated with evidence)
+- day_03/day3_token_optimization.py (✅ working)
+- day_03/day3_cost_report.json (✅ generated)
+- day_03/DAY_03_NOTES.md (✅ updated with evidence)
+- docs/DAILY_CHECKIN_TEMPLATE.md (✅ updated for Day 3)
 
-**Demo status:** ✅ **Fully working** — all Day 2 scripts run successfully in `.venv`; Azure deployed model and local Ollama both validated
+**Demo status:** ✅ **Fully working** — Day 3 script runs end-to-end in `.venv`, generates complete JSON report, and prints concise console summary
 
 ---
 
 ## 2) Assessment Metrics
 
-- **Task completion:** 100% (Q1-Q4 + A1-A8 completed for Day 2 scope)
-- **Correctness:** 98% (model outputs consistent; minor tradeoff notes on local response structure)
-- **Reliability:** 100% (all benchmark and edge-case runs completed successfully)
-- **Hallucination incidents:** 0 critical incidents (cutoff honesty behavior explicitly tested)
-- **Retry/error loops handled:** 4 (provider timeout tuning, Ollama long-generation handling, Azure-only run validation, combined run validation)
+- **Task completion:** 100% (Q1-Q4 + A1-A8 completed for Day 3 scope)
+- **Correctness:** 99% (all calculations and projections consistent with report output)
+- **Reliability:** 100% (script and report generation stable across reruns)
+- **Hallucination incidents:** 0 (deterministic benchmark and formula-based reporting)
+- **Retry/error loops handled:** 2 (model/deployment env fallback adjustment + readability comments pass)
 
 ---
 
 ## 3) Technical Depth
 
-- **Tool use quality (1-5):** 5 — Built end-to-end benchmark pipeline with reusable provider abstraction and CLI routing
-- **Prompt quality (1-5):** 4 — Good task coverage and edge-case prompts; next step is tighter output-length constraints for consistency
-- **State/memory design quality (1-5):** 5 — Standardized result schema across providers and persisted structured run artifacts
-- **Evaluation quality (1-5):** 5 — Compared quality, latency, tokens, and cost across baseline and edge-case suites
+- **Tool use quality (1-5):** 5 — Built reusable analytics pipeline with CLI controls, report artifacts, and projection outputs
+- **Prompt quality (1-5):** 5 — Prompt compression strategy measured with before/after token and cost deltas
+- **State/memory design quality (1-5):** 5 — Structured JSON report includes case-level, aggregate, curves, risk checks, and playbook sections
+- **Evaluation quality (1-5):** 5 — Included baseline vs optimized metrics, profile-based cost curves, and quality-risk floors under token caps
 
 ---
 
 ## 4) Evidence
 
 **Working artifacts:**
-- `day2_model_comparison.py` produced side-by-side benchmark metrics for Azure + Ollama
-- `model_selector.py` produced consistent routing outputs for legal/support/creative/code scenarios
-- `day2_edge_cases.py` produced 3/3 successful runs for each provider
+- `day3_token_optimization.py` produced baseline vs optimized token/cost comparisons for 3 prompt families
+- `day3_cost_report.json` contains case-level metrics, aggregate projections, redundancy insights, model cost curves, quality regression, and optimization playbook
 
-**Measured benchmark summary (A3/A6):**
-- **Azure deployed (`ai102-chat-model`)**
-  - Avg latency: **4873.23 ms**
-  - Avg tokens: **309.67**
-  - Avg estimated cost: **$0.003097/prompt**
-  - Avg quality (auto): **5.0/5**
-- **Ollama (`llama3.2:latest`)**
-  - Avg latency: **23624.63 ms**
-  - Avg tokens: **245.0**
-  - API cost: **$0.0** (infra/electricity not included)
-  - Avg quality (auto): **4.67/5**
+**Measured benchmark summary (A1-A5):**
+- **Average prompt tokens:** 85.67 -> 44.33 (**48.25% reduction**)
+- **Average cost/call:** $0.007457 -> $0.004043 (**45.78% reduction**)
+- **Projection @ 1,000,000 calls/day:**
+  - Baseline daily: **$7,456.67**
+  - Optimized daily: **$4,043.33**
+  - Daily savings: **$3,413.33**
+  - Monthly savings: **$102,400.00**
 
-**Edge-case summary (A7):**
-- Azure: 3/3 success, avg latency **4204.71 ms**
-- Ollama: 3/3 success, avg latency **36432.9 ms**
-- Notable behavior: Azure gave clearer cutoff uncertainty responses; both handled balanced argument prompts reasonably
+**Model cost curves (A6):**
+- azure_deployed_current: $0.007457 -> $0.004043 (45.78%), monthly savings $102,400.00
+- gpt_4o_mini_like: $0.001449 -> $0.000786 (45.70%), monthly savings $19,860.00
+- premium_frontier_like: $0.007457 -> $0.004043 (45.78%), monthly savings $102,400.00
+
+**Quality regression checks (A7):**
+- Completion cap 80: high risk
+- Completion cap 100: high risk
+- Completion cap 120: medium risk
+- Completion cap 160: low risk
+- Recommended minimum completion floor for current schema: **120 tokens**
+
+**Redundancy ranking insight:**
+- Baseline verbosity order: friendly_teacher -> product_manager -> technical_expert
+- Takeaway: compressing high-verbosity prompts first gives faster savings impact
 
 **Learning documentation:**
-- `day_02/DAY_02_NOTES.md` now includes completed concept answers, benchmark analysis, cost projections, and final recommendation matrix
+- `day_03/DAY_03_NOTES.md` includes completed concept answers, A1-A8 outcomes, and measured optimization guidance
 
 **Git commits:**
-- ✅ **Committed and pushed** — Day 2 artifacts (model comparison, selector, edge cases, results, notes) committed and pushed to repository
+- ✅ Committed and pushed for today's Day 3 work
 
 ---
 
@@ -85,41 +90,39 @@
 
 - **Main blocker:** None remaining
 - **Issues resolved:**
-  - Long Ollama response times on larger prompt/model combinations → mitigated via lighter model selection and generation caps
-  - Azure-only visibility gap in results → resolved with provider-specific run and combined run
-  - Local vs cloud timing inconsistency → captured explicitly in benchmark and edge-case summaries
+  - Model/deployment default ambiguity in benchmark script -> fixed by loading `.env` and using `AZURE_OPENAI_DEPLOYMENT_NAME` fallback
+  - Readability confusion in script -> fixed with focused inline comments on key analysis blocks
 - **What I need help with:**
-  - Optional: confirm final pricing constants per Azure deployment for exact (not estimated) cost reporting
+  - Optional: validate real production pricing constants for each deployment profile to replace simulated curve assumptions
 
 ---
 
 ## 6) Reflection
 
 **What went well:**
-- Completed full model-comparison learning loop from concepts to production-style evaluation scripts
-- Successfully benchmarked Azure deployed model against local Ollama with consistent schema
-- Built practical model routing utility aligned with task constraints (quality, latency, budget)
-- Captured edge-case behavior instead of only happy-path outputs
-- Notes are now sequential and review-friendly with measured evidence
+- Converted abstract token concepts into measurable engineering outcomes
+- Built a reusable benchmark that quantifies optimization impact in both per-call and scaled monthly cost terms
+- Added quality-risk gates so optimization stays safe and not blindly aggressive
+- Completed A1-A8 with artifact-backed evidence and clean documentation
 
 **What failed:**
-- Initial assumption that local model would always be faster was incorrect on current hardware; latency was significantly higher despite lower tokens
+- Early version lacked explicit profile curves and regression view; fixed by extending script with A6-A8 analytics
 
 **One change for tomorrow:**
-- Start Day 3 with token/cost optimization and quality-regression checks using today’s benchmark harness as baseline
+- Start Day 4 by building structured JSON output pipeline with Pydantic validation and retry/repair flow
 
 ---
 
 ## 7) Key Takeaways & Questions
 
-**Major insights from Day 2:**
-1. **Model choice is a routing problem** — no single model wins on all dimensions (quality, latency, cost)
-2. **Lower token count does not guarantee lower latency** — compute environment and inference stack matter heavily
-3. **Cloud model currently wins UX in this setup** — Azure was ~4.9x faster on average than local Ollama benchmark runs
-4. **Edge-case behavior matters for trust** — explicit uncertainty handling is a key quality signal
+**Major insights from Day 3:**
+1. **Prompt compression delivers meaningful savings** — ~48% token reduction produced ~46% cost reduction in this workload
+2. **Output caps need quality floors** — aggressive caps (80/100) increase failure risk even when cheaper
+3. **Savings percentage is portable** — optimization ratios stayed similar across model pricing profiles, but absolute savings depends on unit pricing
+4. **Prioritize high-verbosity prompts first** — this gives the fastest optimization payoff
 
 **Questions for feedback:**
 
-1. For production routing, should I add confidence scoring + automatic fallback (e.g., local first, Azure fallback on low confidence)?
-2. Should I prioritize batching/parallelization next for throughput optimization, or prompt-compression first for cost optimization?
-3. For cost reporting, is an estimated per-1K token constant acceptable at this stage, or should I integrate deployment-specific pricing config now?
+1. For Day 4 structured output, should I start with strict schema-first prompts or few-shot-first prompts for higher valid JSON rate?
+2. Should retry/repair logic use the same model or a cheaper model for JSON fixing step?
+3. Is 120 a good default completion floor for the current 8-bullet task family, or should it be tuned per prompt type?
