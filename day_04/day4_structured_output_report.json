@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "date": "2026-04-21T16:53:25.396634",
+    "model": "ai102-chat-model",
+    "total_test_cases": 20,
+    "max_retries": 1
+  },
+  "A5_comparison": {
+    "baseline": {
+      "prompt_type": "baseline",
+      "total_cases": 20,
+      "valid_outputs": 20,
+      "invalid_outputs": 0,
+      "validity_rate": 100.0,
+      "avg_attempts": 0,
+      "failures": []
+    },
+    "fewshot": {
+      "prompt_type": "fewshot",
+      "total_cases": 20,
+      "valid_outputs": 20,
+      "invalid_outputs": 0,
+      "validity_rate": 100.0,
+      "avg_attempts": 0,
+      "failures": []
+    }
+  },
+  "A8_playbook": {
+    "title": "Day 4 Structured Output Playbook",
+    "timestamp": "2026-04-21T16:53:25.395749",
+    "executive_summary": {
+      "baseline_validity": "100.0%",
+      "fewshot_validity": "100.0%",
+      "improvement_delta": "+0.0%",
+      "recommendation": "Both approaches comparable; choose based on token budget"
+    },
+    "failure_taxonomy": {
+      "most_common_failures": [],
+      "total_failures": 0
+    },
+    "best_practices": [
+      "1. Always use Pydantic for validation\u2014silent corruption is worse than loud failure.",
+      "2. For structured output, start with one short schema-focused example (few-shot).",
+      "3. If validation fails, prioritize output constraints; only add more examples if model doesn't understand the schema.",
+      "4. Log all validation failures (field, error type, raw output) to build a feedback loop.",
+      "5. Use retry/repair with lower temperature on subsequent attempts\u2014model is more deterministic when correcting.",
+      "6. For critical outputs (payments, legal), fail fast and alert humans. For suggestions, auto-repair is acceptable.",
+      "7. Monitor failure patterns weekly. If task_id format breaks >2x, add explicit regex constraint in prompt.",
+      "8. Track three metrics: validity_rate (% of valid JSON), parse_rate (% of syntactically correct JSON), and repair_success_rate (% recovered by retry)."
+    ],
+    "next_steps": [
+      "Deploy baseline + few-shot variant to production with feature flag.",
+      "Collect real-world validation failures for 1 week.",
+      "Use failure taxonomy to refine constraints and examples.",
+      "Measure improvement in production validity rate.",
+      "Document which failure types are highest priority to fix."
+    ]
+  }
+}
