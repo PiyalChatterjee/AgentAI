@@ -2,7 +2,7 @@
 
 **30-day transition from React developer to Agentic AI engineer**
 
-**Current Status:** Day 4 complete (April 21, 2026) | Days 1-4 ✅ | Ready for Day 5
+**Current Status:** Day 4 complete (April 21, 2026) | Days 1-4 ✅ | Day 5 setup ready
 
 ---
 
@@ -14,7 +14,7 @@
 | **2** | Model comparison + selector | ✅ Complete | `day_02/day2_model_comparison.py` | ✅ Pushed |
 | **3** | Token optimization + cost analysis | ✅ Complete | `day_03/day3_token_optimization.py` + `day3_cost_report.json` | ✅ Pushed |
 | **4** | Structured output + Pydantic validation | ✅ Complete | `day_04/day4_structured_output.py` + `day4_structured_output_report.json` | ✅ Pushed |
-| **5** | *Agentic patterns & tool use* | 🔄 **NEXT** | TBD (ReAct, Chain-of-Thought reasoning, function calling) | — |
+| **5** | *Agentic patterns & tool use* | 🔄 **In Progress (setup complete)** | `day_05/day5_agentic_react.py` | — |
 
 ---
 
@@ -23,10 +23,11 @@
 **Python:**
 ```bash
 cd c:\Users\piyal.chatterjee\Documents\Projects\AgentAI
-python -m venv .venv
+python -m venv .venv  # skip if .venv already exists
 # Windows
 .venv\Scripts\activate
-# Then: pip install -r requirements.txt (if exists, else manually)
+# Install dependencies
+pip install -r requirements.txt
 ```
 
 **Required packages:**
@@ -35,6 +36,9 @@ python -m venv .venv
 - `pydantic` — JSON validation  
 - `tiktoken` — Token counting
 - `python-dotenv` — .env loading
+
+**Dependency file:**
+- `requirements.txt` is included at repo root for one-command install.
 
 **Environment variables (.env file):**
 ```
@@ -46,7 +50,8 @@ AZURE_OPENAI_DEPLOYMENT_NAME=ai102-chat-model
 
 **Local Ollama (optional):**
 - Model: `llama3.2:latest` at `http://localhost:11434`
-- Start: `ollama serve &`
+- Start (Windows): `ollama serve`
+- Start (Linux/Mac): `ollama serve`
 
 ---
 
@@ -109,6 +114,12 @@ AZURE_OPENAI_DEPLOYMENT_NAME=ai102-chat-model
 - Tool calls have 95%+ parameter validity
 - Failure patterns documented and actionable
 
+**Day 5 starter artifacts (created):**
+- `day_05/day5_agentic_react.py` — Interactive ReAct loop + tool registry + benchmark
+- `day_05/README.md` — Day 5 run guide
+- `day_05/DAY_05_NOTES.md` — Q1-Q4 and A1-A8 tracking template
+- `DAY_05_PLAN.md` — Day 5 objective/timebox/deliverables
+
 ---
 
 ## Files to Review on New System
@@ -130,6 +141,9 @@ AZURE_OPENAI_DEPLOYMENT_NAME=ai102-chat-model
 - `day_02/model_selector.py` — Router by task/budget/latency
 - `day_03/day3_token_optimization.py` — Cost benchmark and analysis
 - `day_04/day4_structured_output.py` — JSON validation pipeline with Pydantic
+
+**Day 5 Working Script:**
+- `day_05/day5_agentic_react.py` — ReAct-style loop with calculator/search/database/email/API tools and interactive mode
 
 **Day 1-4 Report Artifacts:**
 - `day_03/day3_cost_report.json` — Token/cost benchmarks and projections
@@ -179,8 +193,14 @@ cd day_03 && python day3_token_optimization.py --daily-calls 1000000 && cd ..
 # Run Day 4 structured output (generates day4_structured_output_report.json)
 cd day_04 && python day4_structured_output.py --max-retries 1 && cd ..
 
+# Run Day 5 benchmark (generates day5_agentic_report.json)
+cd day_05 && python day5_agentic_react.py --benchmark --out day5_agentic_report.json && cd ..
+
+# Start Day 5 interactive session
+cd day_05 && python day5_agentic_react.py --interactive && cd ..
+
 # View latest check-in
-cat docs/DAILY_CHECKIN_TEMPLATE.md
+Get-Content docs/DAILY_CHECKIN_TEMPLATE.md
 ```
 
 ---
@@ -192,7 +212,8 @@ cat docs/DAILY_CHECKIN_TEMPLATE.md
 3. **Verify Python venv** and install dependencies
 4. **Run Day 4 test** (`python day_04/day4_structured_output.py`) to confirm environment
 5. **Read [day_04/DAY_04_NOTES.md](day_04/DAY_04_NOTES.md)** to understand latest context
-6. **Start Day 5** with Q1-Q4 concept questions on agentic patterns
+6. **Run Day 5 benchmark** (`python day_05/day5_agentic_react.py --benchmark`)
+7. **Start Day 5 interactive session** (`python day_05/day5_agentic_react.py --interactive`)
 
 ---
 

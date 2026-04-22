@@ -28,7 +28,7 @@ Master prompt engineering for reliable structured outputs and validate model res
 
 ## Deliverables
 - day_04/day4_structured_output.py
-- day_04/day4_validation_results.json
+- day_04/day4_structured_output_report.json
 - day_04/DAY_04_NOTES.md
 
 ## Success Criteria

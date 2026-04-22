@@ -1,0 +1,444 @@
+{
+  "metadata": {
+    "date": "2026-04-22T22:00:09.307224",
+    "total_cases": 15,
+    "mode": "offline_mock_tools",
+    "planner": "rule"
+  },
+  "summary": {
+    "react_success_rate": 86.67,
+    "cot_success_rate": 26.67,
+    "avg_loop_depth": 2.07,
+    "hallucinated_tool_calls": 1,
+    "tool_parameter_validity_rate": 100.0,
+    "token_estimate": {
+      "react_input_tokens": 112,
+      "react_output_tokens": 391,
+      "cot_output_tokens": 231
+    }
+  },
+  "playbook": {
+    "when_to_use_react": [
+      "Use ReAct for tasks requiring external facts or tool-backed actions.",
+      "Use ReAct when traceability of each action/observation is required."
+    ],
+    "tool_design_rules": [
+      "Use strict schemas for every tool call.",
+      "Keep tools narrow and deterministic.",
+      "Return compact structured observations."
+    ],
+    "failure_modes": [
+      "Hallucinated tool names when capability is unclear.",
+      "Invalid parameters without schema validation.",
+      "Loop overruns when no explicit finalization rule exists."
+    ]
+  },
+  "cases": [
+    {
+      "task": "Calculate 15 * 7",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"result\": 105.0}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need exact numeric output.",
+          "action": "calculator",
+          "params": {
+            "expression": "15 * 7"
+          },
+          "observation": "{\"result\": 105.0}"
+        }
+      ]
+    },
+    {
+      "task": "Search policy for refund timeline",
+      "success": false,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"endpoint\": \"time\", \"location\": \"global\", \"time_24h\": \"14:30\"}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need external state from API tool.",
+          "action": "api",
+          "params": {
+            "endpoint": "time",
+            "location": "global"
+          },
+          "observation": "{\"endpoint\": \"time\", \"location\": \"global\", \"time_24h\": \"14:30\"}"
+        }
+      ]
+    },
+    {
+      "task": "Get status of user_102 from database",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"record\": {\"plan\": \"starter\", \"status\": \"past_due\"}}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need factual record from database.",
+          "action": "database",
+          "params": {
+            "table": "users",
+            "key": "user_102"
+          },
+          "observation": "{\"record\": {\"plan\": \"starter\", \"status\": \"past_due\"}}"
+        }
+      ]
+    },
+    {
+      "task": "Get weather in kolkata",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"endpoint\": \"weather\", \"location\": \"kolkata\", \"temp_c\": 31, \"condition\": \"humid\"}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need external state from API tool.",
+          "action": "api",
+          "params": {
+            "endpoint": "weather",
+            "location": "kolkata"
+          },
+          "observation": "{\"endpoint\": \"weather\", \"location\": \"kolkata\", \"temp_c\": 31, \"condition\": \"humid\"}"
+        }
+      ]
+    },
+    {
+      "task": "Check service status in payments",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"endpoint\": \"status\", \"service\": \"payments\", \"state\": \"operational\"}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need external state from API tool.",
+          "action": "api",
+          "params": {
+            "endpoint": "status",
+            "location": "payments"
+          },
+          "observation": "{\"endpoint\": \"status\", \"service\": \"payments\", \"state\": \"operational\"}"
+        }
+      ]
+    },
+    {
+      "task": "Find security policy details",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"matches\": [\"Refund policy: full refund within 30 days for annual plans.\", \"Incident policy: sev1 requires incident commander within 10 minutes.\", \"Security policy: rotate keys every 90 days and enforce MFA.\"], \"count\": 3}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need supporting snippet from docs.",
+          "action": "search",
+          "params": {
+            "query": "Find security policy details"
+          },
+          "observation": "{\"matches\": [\"Refund policy: full refund within 30 days for annual plans.\", \"Incident policy: sev1 requires incident commander within 10 minutes.\", \"Security policy: rotate keys every 90 days and enforce MFA.\"], \"count\": 3}"
+        }
+      ]
+    },
+    {
+      "task": "Calculate (12 + 8) / 2",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"result\": 10.0}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need exact numeric output.",
+          "action": "calculator",
+          "params": {
+            "expression": "(12 + 8) / 2"
+          },
+          "observation": "{\"result\": 10.0}"
+        }
+      ]
+    },
+    {
+      "task": "Get status of user_101 from database",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"record\": {\"plan\": \"pro\", \"status\": \"active\"}}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need factual record from database.",
+          "action": "database",
+          "params": {
+            "table": "users",
+            "key": "user_101"
+          },
+          "observation": "{\"record\": {\"plan\": \"pro\", \"status\": \"active\"}}"
+        }
+      ]
+    },
+    {
+      "task": "Search runbook for database saturation",
+      "success": false,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"record\": {\"plan\": \"pro\", \"status\": \"active\"}}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need factual record from database.",
+          "action": "database",
+          "params": {
+            "table": "users",
+            "key": "user_101"
+          },
+          "observation": "{\"record\": {\"plan\": \"pro\", \"status\": \"active\"}}"
+        }
+      ]
+    },
+    {
+      "task": "Get time in tokyo",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"endpoint\": \"time\", \"location\": \"tokyo\", \"time_24h\": \"14:30\"}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need external state from API tool.",
+          "action": "api",
+          "params": {
+            "endpoint": "time",
+            "location": "tokyo"
+          },
+          "observation": "{\"endpoint\": \"time\", \"location\": \"tokyo\", \"time_24h\": \"14:30\"}"
+        }
+      ]
+    },
+    {
+      "task": "Email weather summary to ops@example.com after getting weather in paris",
+      "success": true,
+      "steps": 3,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task and queued email with evidence: {\"queued\": true, \"to\": \"ops@example.com\", \"subject\": \"Agent summary\", \"message_id\": \"msg_59973\"}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need external state from API tool.",
+          "action": "api",
+          "params": {
+            "endpoint": "weather",
+            "location": "paris"
+          },
+          "observation": "{\"endpoint\": \"weather\", \"location\": \"paris\", \"temp_c\": 31, \"condition\": \"humid\"}"
+        },
+        {
+          "step": 2,
+          "thought": "Need to send summary after gathering facts.",
+          "action": "email",
+          "params": {
+            "to": "ops@example.com",
+            "subject": "Agent summary",
+            "body": "{\"endpoint\": \"weather\", \"location\": \"paris\", \"temp_c\": 31, \"condition\": \"humid\"}"
+          },
+          "observation": "{\"queued\": true, \"to\": \"ops@example.com\", \"subject\": \"Agent summary\", \"message_id\": \"msg_59973\"}"
+        }
+      ]
+    },
+    {
+      "task": "Translate this line to French",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 1,
+      "invalid_params": 0,
+      "final_answer": "I could not complete translation because no translation tool is available.",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Attempting unsupported tool (hallucination test).",
+          "action": "translator",
+          "params": {
+            "text": "Translate this line to French"
+          },
+          "observation": "Tool not found: translator. Falling back to search."
+        },
+        {
+          "step": 1,
+          "thought": "Recovered by using available search tool.",
+          "action": "search",
+          "params": {
+            "query": "Translate this line to French"
+          },
+          "observation": "{\"matches\": [], \"count\": 0}"
+        }
+      ]
+    },
+    {
+      "task": "Get service status in auth",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"endpoint\": \"status\", \"service\": \"auth\", \"state\": \"operational\"}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need external state from API tool.",
+          "action": "api",
+          "params": {
+            "endpoint": "status",
+            "location": "auth"
+          },
+          "observation": "{\"endpoint\": \"status\", \"service\": \"auth\", \"state\": \"operational\"}"
+        }
+      ]
+    },
+    {
+      "task": "Calculate 44 / 11",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"result\": 4.0}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need exact numeric output.",
+          "action": "calculator",
+          "params": {
+            "expression": "44 / 11"
+          },
+          "observation": "{\"result\": 4.0}"
+        }
+      ]
+    },
+    {
+      "task": "Search policy for incident commander timing",
+      "success": true,
+      "steps": 2,
+      "hallucinated_calls": 0,
+      "invalid_params": 0,
+      "final_answer": "Completed task with evidence: {\"matches\": [\"Refund policy: full refund within 30 days for annual plans.\", \"Incident policy: sev1 requires incident commander within 10 minutes.\", \"Security policy: rotate keys every 90 days and enforce MFA.\"], \"count\": 4}",
+      "trace": [
+        {
+          "step": 1,
+          "thought": "Need supporting snippet from docs.",
+          "action": "search",
+          "params": {
+            "query": "Search policy for incident commander timing"
+          },
+          "observation": "{\"matches\": [\"Refund policy: full refund within 30 days for annual plans.\", \"Incident policy: sev1 requires incident commander within 10 minutes.\", \"Security policy: rotate keys every 90 days and enforce MFA.\"], \"count\": 4}"
+        }
+      ]
+    }
+  ],
+  "cot_cases": [
+    {
+      "case_id": 1,
+      "task": "Calculate 15 * 7",
+      "answer": "Estimated answer: 105.0",
+      "success": true
+    },
+    {
+      "case_id": 2,
+      "task": "Search policy for refund timeline",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 3,
+      "task": "Get status of user_102 from database",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 4,
+      "task": "Get weather in kolkata",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 5,
+      "task": "Check service status in payments",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 6,
+      "task": "Find security policy details",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 7,
+      "task": "Calculate (12 + 8) / 2",
+      "answer": "Estimated answer: 10.0",
+      "success": true
+    },
+    {
+      "case_id": 8,
+      "task": "Get status of user_101 from database",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 9,
+      "task": "Search runbook for database saturation",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 10,
+      "task": "Get time in tokyo",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 11,
+      "task": "Email weather summary to ops@example.com after getting weather in paris",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 12,
+      "task": "Translate this line to French",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": true
+    },
+    {
+      "case_id": 13,
+      "task": "Get service status in auth",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    },
+    {
+      "case_id": 14,
+      "task": "Calculate 44 / 11",
+      "answer": "Estimated answer: 4.0",
+      "success": true
+    },
+    {
+      "case_id": 15,
+      "task": "Search policy for incident commander timing",
+      "answer": "I reasoned about this without tools, but I could not verify external facts.",
+      "success": false
+    }
+  ]
+}
