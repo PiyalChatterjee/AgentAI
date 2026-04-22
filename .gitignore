@@ -133,3 +133,7 @@ secrets.py
 .idea/
 *.swp
 *.swo
+
+# Day 5 generated outputs
+day_05/project/brochure_test.json
+day_05/project/smoke_output.json
