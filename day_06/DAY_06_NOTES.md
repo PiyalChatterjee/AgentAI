@@ -101,5 +101,18 @@ Date: April 23, 2026
 
 ## Reflection
 - What worked best today:
+	- Mentor-mode incremental implementation reduced logic regressions and kept each step verifiable.
+	- Schema-first tool design (Pydantic input models) significantly improved argument correctness.
+	- Standard response envelope (`ok/tool/mode/data/error/trace_id`) made debugging and UI mapping straightforward.
+	- Runtime metrics and `trace_id` usage gave immediate visibility into tool-call health.
+
 - What failed and why:
+	- `web_search` is still simulated/model-generated content, not true live retrieval; this limits factual freshness.
+	- Some tool-choice outputs can vary by prompt wording, so behavior is not fully deterministic without stricter prompts/policies.
+	- Early integration issues (typing and missing function wiring) happened due to incremental assembly before final pass.
+
 - What to improve tomorrow (Day 7):
+	- Add one real external data/retrieval tool with explicit timeout, retry, and backoff controls.
+	- Persist metrics/traces to JSONL logs for session-to-session analysis.
+	- Add a compact evaluation set for tool-call precision, validation-failure rate, and fallback frequency.
+	- Define clear production default for tool-choice mode based on measured behavior.
