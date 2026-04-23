@@ -1,107 +1,109 @@
-# Daily Check-In: Day 5 (Project 1 Continuation)
+# Daily Check-In: Day 6 (Function Calling and Tool Use)
 
 **Date:** April 23, 2026  
-**Phase/Day:** Day 5 - Project 1 (AI Brochure Generator)  
-**Hours invested:** ~3.5 hours
+**Phase/Day:** Day 6 - Function Calling and Tool Use  
+**Hours invested:** ~4.0 hours
 
 ---
 
 ## 1) Build Output
 
 **What I built today:**
-- Completed end-to-end brochure generator pipeline in `day_05/project/main.py`:
-  - Section 3: real web research from URL/company input with resilient extraction
-  - Section 4: Azure OpenAI generation with strict JSON prompt, one-shot JSON repair, and schema pre-normalization
-  - Section 5: Pydantic validation using `BrochureOutput`
-  - Section 6: JSON save/output logic
-  - Section 7: orchestration + typed error handling + input normalization
-- Added reliability controls:
-  - `--llm-timeout` and `--llm-retries` in main flow
-  - env fallback support for timeout/retries
-  - argument guardrails for invalid timeout/retry values
-- Added `day_05/project/smoke_test.py` to quickly validate the pipeline end-to-end.
-- Added generated-output ignore rules in `.gitignore` for:
-  - `day_05/project/brochure_test.json`
-  - `day_05/project/smoke_output.json`
+- Implemented Day 6 function-calling engine in `day_06/day6_function_calling.py`.
+- Added tool registry and OpenAI tool schema conversion for:
+  - `web_search`
+  - `company_lookup`
+  - `summarize_text`
+- Added Pydantic input validation models:
+  - `WebSearchInput`
+  - `CompanyLookupInput`
+  - `SummarizeTextInput`
+- Added standardized response envelope for UI-ready outputs:
+  - `ok`, `tool`, `mode`, `data`, `error`, `trace_id`
+- Added safe fallback behavior for `web_search` when Azure response is unavailable/malformed.
+- Added tool-choice comparison mode (`auto`, `required`, `none`) to observe selection behavior.
+- Added interactive mode and single-query mode with trace visibility.
+- Added runtime metrics tracking:
+  - `total_calls`, `success`, `schema_validation_failed`, `unknown_tool`, `tool_execution_failed`
 
 **Files created/modified:**
-- `day_05/project/main.py` (new full implementation)
-- `day_05/project/smoke_test.py` (new smoke test runner)
-- `.gitignore` (ignore generated JSON outputs)
-- `docs/DAILY_CHECKIN_TEMPLATE.md` (today's update)
+- `day_06/day6_function_calling.py`
+- `day_06/DAY_06_NOTES.md`
+- `day_06/README.md`
+- `DAY_06_PLAN.md`
+- `docs/DAILY_CHECKIN_TEMPLATE.md`
 
-**Demo status:** Working. Both direct run and smoke test complete successfully.
+**Demo status:** Working. Compile and runtime checks passed.
 
 ---
 
 ## 2) Assessment Metrics
 
-- **Task completion:** 100% for Project 1 core pipeline sections (3-7)
-- **Runtime stability:** multiple successful runs with company-only input
-- **Validation quality:** schema enforcement catches malformed/short outputs
-- **Operational readiness:** smoke test script added for repeatable checks
+- **Task completion:** 100% (Q1-Q4 and A1-A8 completed)
+- **Tool flow stability:** validated execution path with safe fallback
+- **Validation coverage:** strict schema validation before execution
+- **Observability:** trace IDs + runtime counters exposed in outputs
 
 ---
 
 ## 3) Technical Depth
 
-- **Research extraction quality (1-5):** 4.0 - handles meta tags, JSON-LD description, and script-heavy fallback text
-- **LLM integration quality (1-5):** 4.5 - deployment/env handling, retries, timeout, and JSON repair
-- **Validation quality (1-5):** 4.5 - Pydantic + pre-validation normalization for required list sizes
-- **Orchestration quality (1-5):** 4.5 - stage-aware errors and clean CLI flow
+- **Tool schema quality (1-5):** 4.6 - concise tool names, constrained args, explicit contracts
+- **Validation/fallback design (1-5):** 4.7 - pre-execution validation + deterministic error envelopes
+- **Execution architecture (1-5):** 4.5 - clear dispatcher and UI adapter boundaries
+- **Operational readiness (1-5):** 4.5 - compile checks and runnable CLI modes
 
 ---
 
 ## 4) Evidence
 
 **Working artifacts:**
-- `day_05/project/main.py` includes completed Sections 3-7 with robust flow controls
-- `day_05/project/smoke_test.py` validates the same pipeline with configurable timeout/retries
-- `day_05/project/brochure_test.json` and `day_05/project/smoke_output.json` produced in successful runs (now ignored)
+- `day_06/day6_function_calling.py` includes tool registry, validation, dispatcher, envelope, metrics, CLI, and compare mode.
+- `day_06/DAY_06_NOTES.md` contains completed Day 6 learning and implementation evidence.
 
-**Recent command evidence:**
-- `python day_05/project/main.py --company "AMN" --output day_05/project/brochure_test.json --llm-timeout 30 --llm-retries 1`
-- `python day_05/project/smoke_test.py --company "AMN" --llm-timeout 30 --llm-retries 1 --output day_05/project/smoke_output.json`
+**Command evidence:**
+- `python -m py_compile day_06/day6_function_calling.py` (exit code 0)
+- `python day_06/day6_function_calling.py` (exit code 0)
+- `python day_06/day6_function_calling.py --query "search agentic ai"` (exit code 0)
 
-**Git evidence:**
-- Local commit: `caa60ac`
-- Message: `feat(day5): complete brochure generator pipeline with hardening`
-- Commit contains code implementation for `main.py` and `smoke_test.py`
+**Behavior evidence:**
+- Tool-choice comparison confirms mode-dependent behavior (`auto`, `required`, `none`).
+- Metrics increment correctly for success and error categories.
 
 ---
 
 ## 5) Blockers
 
-- **Main blocker:** None critical
-- **Issues resolved today:**
-  - deployment-name mismatch by using env-based deployment selection
-  - invalid JSON response handling with one retry repair call
-  - short bullet lists causing schema failures via normalization safeguards
+- **Main blocker:** None critical.
+- **Issues handled:**
+  - tool-call typing edge cases
+  - missing function wiring in early draft
+  - schema/error propagation consistency
 
 ---
 
 ## 6) Reflection
 
 **What went well:**
-- Incremental mentor-mode workflow produced stable, understandable code
-- Reliability improvements (timeouts/retries/repair) reduced runtime failure risk
-- Smoke test provided quick confidence checks after each change
+- Mentor-mode incremental build improved correctness and understanding.
+- Envelope-first design made failures easier to reason about and surface to UI.
+- Tool-choice comparison gave clear practical insight for production defaults.
 
 **What was weaker:**
-- Raw scraping quality still depends on site HTML accessibility (403/script-heavy pages)
+- `web_search` remains model-generated knowledge style, not a true live web connector.
 
-**One change for tomorrow:**
-- Add optional domain-specific enrichment/source routing to improve research quality before LLM generation.
+**One change for tomorrow (Day 7):**
+- Add at least one real external tool integration with timeout/retry/backoff and telemetry logging.
 
 ---
 
 ## 7) Key Takeaways & Questions
 
 **Major insights from today:**
-1. For Azure OpenAI, deployment name consistency is as important as model selection.
-2. Schema validation should be paired with pre-validation normalization for LLM outputs.
-3. A tiny smoke test script gives strong development feedback with low overhead.
+1. Precise input schemas strongly improve tool-call reliability.
+2. Standardized envelopes simplify downstream UX and debugging.
+3. Metrics and trace IDs are essential even in small agent prototypes.
 
 **Questions for feedback:**
-1. Should we keep one curated brochure sample committed under a fixtures folder?
-2. Do you want URL-first collection to become mandatory when both URL and company are provided?
+1. Should Day 7 prioritize a real retrieval tool first or multimodal ingestion first?
+2. Do you want persistent metrics logging (JSONL) added before expanding tool count?

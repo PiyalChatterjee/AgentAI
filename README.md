@@ -2,7 +2,7 @@
 
 **30-day transition from React developer to Agentic AI engineer**
 
-**Current Status:** Day 4 complete (April 21, 2026) | Days 1-4 ✅ | Day 5 setup ready
+**Current Status:** Day 5 complete + Project 1 completed (April 23, 2026) | Days 1-5 ✅ | Day 6 setup ready
 
 ---
 
@@ -14,7 +14,8 @@
 | **2** | Model comparison + selector | ✅ Complete | `day_02/day2_model_comparison.py` | ✅ Pushed |
 | **3** | Token optimization + cost analysis | ✅ Complete | `day_03/day3_token_optimization.py` + `day3_cost_report.json` | ✅ Pushed |
 | **4** | Structured output + Pydantic validation | ✅ Complete | `day_04/day4_structured_output.py` + `day4_structured_output_report.json` | ✅ Pushed |
-| **5** | *Agentic patterns & tool use* | 🔄 **In Progress (setup complete)** | `day_05/day5_agentic_react.py` | — |
+| **5** | Agentic patterns + brochure generator | ✅ Complete | `day_05/day5_agentic_react.py` + `day_05/project/main.py` | ✅ Pushed |
+| **6** | *Function calling & tool use* | 🔄 **In Progress (mentor-mode setup)** | `day_06/day6_function_calling.py` (to build) | — |
 
 ---
 
@@ -90,35 +91,43 @@ AZURE_OPENAI_DEPLOYMENT_NAME=ai102-chat-model
 
 ---
 
-## Day 5 Planning (What Needs to Happen Next)
+## Day 6 Planning (What Needs to Happen Next)
 
-### Scope: Agentic Patterns & Tool Use
+### Scope: Function Calling & Tool Use
 **Concept Questions (Q1-Q4):**
-1. **Q1:** What is the ReAct (Reasoning + Acting) pattern, and when is it better than chain-of-thought alone?
-2. **Q2:** How do you design tool definitions so the model understands when and how to call them?
-3. **Q3:** What goes wrong in multi-step agentic loops (hallucinated tool calls, infinite loops, bad hand-offs)?
-4. **Q4:** How do you measure and improve agentic success rates in production?
+1. **Q1:** What is function calling in LLM systems and why is it essential for agents?
+2. **Q2:** How should tool schemas be designed for high tool-selection accuracy?
+3. **Q3:** What validation steps should run before executing model-requested tools?
+4. **Q4:** What are robust fallback patterns for malformed arguments or tool failures?
 
 **Activities (A1-A8):**
-- A1: Build tool registry with 5 sample tools (calculator, search, database, email, API)
-- A2: Implement ReAct prompt with reasoning + action + observation loop
-- A3: Add tool schema validation (input/output contracts with Pydantic)
-- A4: Build retry logic for failed tool calls and reasoning fixes
-- A5: Create 15-step reasoning benchmark (compare ReAct vs pure chain-of-thought)
-- A6: Track hallucination patterns (tool calls that don't exist, bad parameters)
-- A7: Measure success rate, token efficiency, and loop depth
-- A8: Generate agentic patterns playbook (when to use ReAct, tool design rules, failure modes)
+- A1: Define tool registry with 3-5 tools
+- A2: Implement function executors with clear IO contracts
+- A3: Add Pydantic validation for tool arguments
+- A4: Add tool failure handling and safe fallback
+- A5: Compare `tool_choice` modes (`auto`, `required`, `none`)
+- A6: Measure argument validity and tool correctness
+- A7: Add interactive loop with tool-trace output
+- A8: Produce Day 6 tool schema best-practice playbook
 
 **Success Criteria:**
-- ReAct loop completes 80%+ of tasks successfully
-- Tool calls have 95%+ parameter validity
-- Failure patterns documented and actionable
+- Tool-call flow works end-to-end in interactive mode
+- Tool argument validity >= 95% on test prompts
+- Fallback path is explicit and non-crashing
 
-**Day 5 starter artifacts (created):**
-- `day_05/day5_agentic_react.py` — Interactive ReAct loop + tool registry + benchmark
-- `day_05/README.md` — Day 5 run guide
-- `day_05/DAY_05_NOTES.md` — Q1-Q4 and A1-A8 tracking template
-- `DAY_05_PLAN.md` — Day 5 objective/timebox/deliverables
+**Day 6 starter artifacts (prepared):**
+- `day_06/README.md` — Day 6 mentor-mode run guide
+- `day_06/DAY_06_NOTES.md` — Q1-Q4 and A1-A8 tracking template
+- `DAY_06_PLAN.md` — Day 6 objective/timebox/deliverables
+- `day_06/day6_function_calling.py` — to be built interactively
+
+---
+
+## Day 5 Summary (Completed)
+
+- ReAct benchmark + Azure planner integrated
+- Project 1 brochure generator completed (`day_05/project/main.py`)
+- Smoke test added (`day_05/project/smoke_test.py`)
 
 ---
 
@@ -174,7 +183,8 @@ python day4_structured_output.py --max-retries 1
 | Model selection | Day 2 | Router decides Azure vs Ollama by task type + constraints |
 | Cost optimization | Day 3 | Measure before/after; quality regression floors matter |
 | Structured output | Day 4 | Pydantic catches silent corruption; retry/repair at lower temperature |
-| *Agentic reasoning* | **Day 5** | ReAct pattern + tool use + hallucination detection |
+| Agentic reasoning | Day 5 | ReAct pattern + tool use + hallucination detection |
+| *Function calling* | **Day 6** | Tool schemas + validated tool execution + fallback |
 
 ---
 
@@ -198,6 +208,9 @@ cd day_05 && python day5_agentic_react.py --benchmark --out day5_agentic_report.
 
 # Start Day 5 interactive session
 cd day_05 && python day5_agentic_react.py --interactive && cd ..
+
+# Start Day 6 mentor-mode build
+cd day_06
 
 # View latest check-in
 Get-Content docs/DAILY_CHECKIN_TEMPLATE.md
