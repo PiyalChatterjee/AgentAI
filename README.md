@@ -2,7 +2,7 @@
 
 **30-day transition from React developer to Agentic AI engineer**
 
-**Current Status:** Day 5 complete + Project 1 completed (April 23, 2026) | Days 1-5 ✅ | Day 6 setup ready
+**Current Status:** Day 6 complete (April 23, 2026) | Days 1-6 ✅ | Day 7 setup ready
 
 ---
 
@@ -15,7 +15,8 @@
 | **3** | Token optimization + cost analysis | ✅ Complete | `day_03/day3_token_optimization.py` + `day3_cost_report.json` | ✅ Pushed |
 | **4** | Structured output + Pydantic validation | ✅ Complete | `day_04/day4_structured_output.py` + `day4_structured_output_report.json` | ✅ Pushed |
 | **5** | Agentic patterns + brochure generator | ✅ Complete | `day_05/day5_agentic_react.py` + `day_05/project/main.py` | ✅ Pushed |
-| **6** | *Function calling & tool use* | 🔄 **In Progress (mentor-mode setup)** | `day_06/day6_function_calling.py` (to build) | — |
+| **6** | Function calling & tool use | ✅ Complete | `day_06/day6_function_calling.py` + `day_06/DAY_06_NOTES.md` | ✅ Pushed |
+| **7** | *Multimodal agent foundations* | 🔄 **In Progress (setup ready)** | `day_07/day7_multimodal_agent.py` (to build) | — |
 
 ---
 
@@ -91,35 +92,43 @@ AZURE_OPENAI_DEPLOYMENT_NAME=ai102-chat-model
 
 ---
 
-## Day 6 Planning (What Needs to Happen Next)
+## Day 7 Planning (What Needs to Happen Next)
 
-### Scope: Function Calling & Tool Use
+### Scope: Multimodal Agent Foundations + Real Tool Integration
 **Concept Questions (Q1-Q4):**
-1. **Q1:** What is function calling in LLM systems and why is it essential for agents?
-2. **Q2:** How should tool schemas be designed for high tool-selection accuracy?
-3. **Q3:** What validation steps should run before executing model-requested tools?
-4. **Q4:** What are robust fallback patterns for malformed arguments or tool failures?
+1. **Q1:** What changes when moving from text-only agents to multimodal agents?
+2. **Q2:** How should multimodal input contracts be designed (text, image URL/path, metadata)?
+3. **Q3:** What validation and safety checks are required before image/tool processing?
+4. **Q4:** How do we evaluate multimodal tool-use quality and failure modes?
 
 **Activities (A1-A8):**
-- A1: Define tool registry with 3-5 tools
-- A2: Implement function executors with clear IO contracts
-- A3: Add Pydantic validation for tool arguments
-- A4: Add tool failure handling and safe fallback
-- A5: Compare `tool_choice` modes (`auto`, `required`, `none`)
-- A6: Measure argument validity and tool correctness
-- A7: Add interactive loop with tool-trace output
-- A8: Produce Day 6 tool schema best-practice playbook
+- A1: Define multimodal request schema and routing contract
+- A2: Implement image-analysis tool stub with strict IO shape
+- A3: Add one real retrieval/data tool with timeout and retry controls
+- A4: Add validation and safety checks for image/source inputs
+- A5: Implement planner routing for text-only vs multimodal flows
+- A6: Add JSONL metrics/traces persistence
+- A7: Build quick evaluation set (10 prompts) for reliability checks
+- A8: Produce Day 7 multimodal failure-mode and mitigation playbook
 
 **Success Criteria:**
-- Tool-call flow works end-to-end in interactive mode
-- Tool argument validity >= 95% on test prompts
-- Fallback path is explicit and non-crashing
+- Multimodal pipeline runs end-to-end with explicit routing visibility
+- Input validation blocks unsafe/invalid image or URL payloads
+- Real retrieval tool is resilient (timeout/retry/fallback) and observable
 
-**Day 6 starter artifacts (prepared):**
-- `day_06/README.md` — Day 6 mentor-mode run guide
-- `day_06/DAY_06_NOTES.md` — Q1-Q4 and A1-A8 tracking template
-- `DAY_06_PLAN.md` — Day 6 objective/timebox/deliverables
-- `day_06/day6_function_calling.py` — to be built interactively
+**Day 7 starter artifacts (prepared):**
+- `day_07/README.md` — Day 7 mentor-mode run guide
+- `day_07/DAY_07_NOTES.md` — Q1-Q4 and A1-A8 tracking template
+- `DAY_07_PLAN.md` — Day 7 objective/timebox/deliverables
+- `day_07/day7_multimodal_agent.py` — to be built interactively
+
+---
+
+## Day 6 Summary (Completed)
+
+- Function-calling engine completed (`day_06/day6_function_calling.py`)
+- Tool-choice comparison (`auto`, `required`, `none`) validated
+- Metrics + trace-enabled response envelope completed
 
 ---
 
@@ -184,7 +193,8 @@ python day4_structured_output.py --max-retries 1
 | Cost optimization | Day 3 | Measure before/after; quality regression floors matter |
 | Structured output | Day 4 | Pydantic catches silent corruption; retry/repair at lower temperature |
 | Agentic reasoning | Day 5 | ReAct pattern + tool use + hallucination detection |
-| *Function calling* | **Day 6** | Tool schemas + validated tool execution + fallback |
+| Function calling | Day 6 | Tool schemas + validated tool execution + fallback |
+| *Multimodal foundations* | **Day 7** | Multimodal contracts + real retrieval + observability |
 
 ---
 
@@ -209,8 +219,11 @@ cd day_05 && python day5_agentic_react.py --benchmark --out day5_agentic_report.
 # Start Day 5 interactive session
 cd day_05 && python day5_agentic_react.py --interactive && cd ..
 
-# Start Day 6 mentor-mode build
-cd day_06
+# Start Day 6 script (completed)
+python day_06/day6_function_calling.py --query "search agentic ai"
+
+# Start Day 7 mentor-mode build
+cd day_07
 
 # View latest check-in
 Get-Content docs/DAILY_CHECKIN_TEMPLATE.md
